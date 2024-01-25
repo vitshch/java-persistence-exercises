@@ -1,10 +1,16 @@
 package com.bobocode.model;
 
-import com.bobocode.util.ExerciseNotCompletedException;
-import lombok.*;
+import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
+import static lombok.AccessLevel.PRIVATE;
 
 /**
  * todo:
@@ -24,16 +30,29 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@EqualsAndHashCode(of = "id")
+@Entity
+@Table(name = "company")
 public class Company {
+
+    @Id
+    @GeneratedValue
     private Long id;
+
+    @Column(nullable = false)
     private String name;
+
+    @Setter(PRIVATE)
+    @OneToMany(mappedBy = "company")
     private List<Product> products = new ArrayList<>();
 
     public void addProduct(Product product) {
-        throw new ExerciseNotCompletedException();
+        product.setCompany(this);
+        products.add(product);
     }
 
     public void removeProduct(Product product) {
-        throw new ExerciseNotCompletedException();
+        products.remove(product);
+        product.setCompany(null);
     }
 }

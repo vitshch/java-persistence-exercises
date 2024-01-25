@@ -83,6 +83,7 @@ class AuthorBookMappingTest {
 
     @Test
     @Order(5)
+    // TODO: 17/01/2024 typo with expectation
     @DisplayName("Saving an author throws an expectation when the first name is null")
     void saveAuthorWithoutFirstName() {
         Author authorWithNullFirstName = createRandomAuthor();

@@ -1,5 +1,7 @@
 package com.bobocode.model;
 
+import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,9 +21,22 @@ import java.time.LocalDateTime;
  */
 @Getter
 @Setter
+@EqualsAndHashCode(of = "id")
+
+@Entity
+@Table(name = "photo_comment")
 public class PhotoComment {
+
+    @Id
+    @GeneratedValue
     private Long id;
+
+    @Column(nullable = false)
     private String text;
+
     private LocalDateTime createdOn;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "photo_id")
     private Photo photo;
 }

@@ -24,5 +24,19 @@ You're supposed to be familiar with *JPA* mapping strategies and *Hibernate ORM*
  * [@ManyToMany](http://docs.jboss.org/hibernate/orm/5.3/userguide/html_single/Hibernate_User_Guide.html#associations-many-to-many)<img src="https://upload.wikimedia.org/wikipedia/commons/2/22/Hibernate_logo_a.png" height=15/>
  * [The best way to use the @ManyToMany annotation with JPA and Hibernate](https://vladmihalcea.com/the-best-way-to-use-the-manytomany-annotation-with-jpa-and-hibernate/)
  * [How to implement equals and hashCode using the JPA entity identifier](https://vladmihalcea.com/how-to-implement-equals-and-hashcode-using-the-jpa-entity-identifier/)
- 
 
+
+
+### Room 6
+- Basics
+  - All relations in DB are build on top of ForeignKey
+  - Constraints are ensure data validity in scope of the table
+  - Naming convention should be supported
+  - Check your schema regarding the Normal Forms(3-nf)
+- Spring
+  - If you are using Spring Data - disable Open Session In View, it's antipattern
+- Transactions
+  - Help ot control data consistency
+- JPA
+    - Mapping should be configured on child side
+    - OneToOne could use shared primary key. @MapsId will be helpful
